@@ -4,27 +4,28 @@ class Program
 {
     static void Main()
     {
-        Console.Write("Please enter items count: ");
+        Console.Write("Введите размер массива: ");
         int n = int.Parse(Console.ReadLine());
 
         string[] arr = new string[n];
-        string temp;
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Введите строку {i + 1}: ");
+            arr[i] = Console.ReadLine();
+        }
+
+        string[] newArr = new string[n];
         int count = 0;
         for (int i = 0; i < n; i++)
         {
-            Console.Write($"Row {i + 1}: ");
-            temp = Console.ReadLine();
-            if (temp.Length <= 3)
+            if (arr[i].Length <= 3)
             {
-                arr[count] = temp;
+                newArr[count] = arr[i];
                 count++;
             }
         }
 
-        Console.WriteLine("Array with strings less then 3:");
-        for (int i = 0; i < count; i++)
-        {
-            Console.WriteLine(arr[i]);
-        }
+        Console.WriteLine("Массив строк длиной меньше или равной 3 символам:");
+        Console.WriteLine(string.Join(Environment.NewLine, newArr));
     }
 }
